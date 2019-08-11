@@ -1,11 +1,17 @@
-## Script
+# lightwait-shell
 
-These two scripts are status trigger in the lightwait-stack.
+This repository contains scripts as simple status [trigger](https://github.com/BuZZ-T/lightwait#trigger). in the [lightwait-stack](https://github.com/BuZZ-T/lightwait).
 
-### Setup
+Currently a Bash script and a Batch script with different amount of functionality is available.
 
-Use the `lw.sh` script for Linux, Mac OS and Cygwin and use the `lw.bat`.  
-In both scripts, the variable `LW_SERIAL` in line 3 can be used to select the program for the serial communication.
+ **Please note**: This is in a very early state of development. Rather stick to [lightwait-go-shell](https://github.com/BuZZ-T/lightwait-go-shell)!
+
+## Setup
+
+* Use the `lw.sh` script for Linux, Mac OS and Cygwin
+* Use the `lw.bat` for Windows terminal
+* Set the environment variable `LW_SERIAL` to 
+
 
 Make the script available on the command line:
 
@@ -14,23 +20,24 @@ Make the script available on the command line:
     * `ln -s /path/to/lw.sh ~/bin/lw`
 * Add the folder containing the script to your PATH
 
-Use:
-
-* `python lightwait.py` for python
-* `lightwait` for go on Linux or Mac
-* `lightwait.exe` for go on Windows 
-
-### Usage
+## Usage
 
 `lw <task> <task parameters>`
 e.g.:
 
-    lw mvn clean install
-    lw java -jar calculation.jar
-    lw mkfs.vfat /dev/sdb1
-    lw rsync --numeric-ids -avze ssh /home/user user@example.com:/backups 
+```bash
+lw mvn clean install
+lw java -jar calculation.jar
+lw mkfs.vfat /dev/sdb1
+lw rsync --numeric-ids -avze ssh /home/user user@example.com:/backups 
+```
 
 * It turns blue, when the task starts
 * It turns green, once the task is succesfully finished
 * It turns red if the task returns an error code other than 0
 * Press Enter to complete the lw task. The LED turns off
+
+## TODOs
+* Add a `lw.ps1` script for Windows Powershell
+* Rename the variable `LW_SERIAL` to `LW_TRANSMITTER`.
+* Implement logic in the batch file
